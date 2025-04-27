@@ -1,28 +1,28 @@
 enum NetworkProvider {
-  MTN,
-  Airtel,
-  Glo,
-  NineMobile,
-  Unknown,
+  mtn,
+  airtel,
+  glo,
+  nineMobile,
+  unknown,
 }
 
 class NetworkChecker {
   static NetworkProvider getNetwork(String phoneNumber) {
     final cleaned = _cleanPhoneNumber(phoneNumber);
 
-    if (cleaned.length < 4) return NetworkProvider.Unknown;
+    if (cleaned.length < 4) return NetworkProvider.unknown;
     final prefix = cleaned.substring(0, 4);
 
     if (_mtnPrefixes.contains(prefix)) {
-      return NetworkProvider.MTN;
+      return NetworkProvider.mtn;
     } else if (_airtelPrefixes.contains(prefix)) {
-      return NetworkProvider.Airtel;
+      return NetworkProvider.airtel;
     } else if (_gloPrefixes.contains(prefix)) {
-      return NetworkProvider.Glo;
+      return NetworkProvider.glo;
     } else if (_nineMobilePrefixes.contains(prefix)) {
-      return NetworkProvider.NineMobile;
+      return NetworkProvider.nineMobile;
     } else {
-      return NetworkProvider.Unknown;
+      return NetworkProvider.unknown;
     }
   }
 
