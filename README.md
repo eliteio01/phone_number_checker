@@ -1,39 +1,120 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+# 📱 phone_number_checker
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+[![pub package](https://img.shields.io/pub/v/phone_number_checker.svg)](https://pub.dev/packages/phone_number_checker)
+[![License: BSD-3-Clause](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![Build Status](https://github.com/eliteio01/phone_number_checker/actions/workflows/flutter.yml/badge.svg)](https://github.com/eliteio01/phone_number_checker/actions)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
 
-## Features
+A lightweight Flutter package to detect Nigerian mobile networks (MTN, Airtel, Glo, 9mobile) from phone numbers in local (`080xxxxxxx`) or international (`+23480xxxxxxx`) formats.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+---
 
-## Getting started
+## ✨ Features
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+- Detects Nigerian mobile network operators:
+    - **MTN**
+    - **Airtel**
+    - **Glo**
+    - **9mobile**
+- Accepts numbers in local (`080...`) and international (`+23480...`) formats.
+- Returns **Unknown** for unsupported or invalid numbers.
+- Simple API and easy to integrate.
 
-## Usage
+---
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+## 🚀 Getting Started
 
-```dart
-const like = 'sample';
+Add `phone_number_checker` to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  phone_number_checker: ^0.0.1
 ```
 
-## Additional information
+Then run:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```bash
+flutter pub get
+```
+
+---
+
+## 📦 Usage
+
+Import the package:
+
+```dart
+import 'package:phone_number_checker/phone_number_checker.dart';
+```
+
+Check the network:
+
+```dart
+final network = NetworkChecker.getNetwork('08031234567');
+print(network.name); // Output: MTN
+```
+
+Or with international format:
+
+```dart
+final network = NetworkChecker.getNetwork('+2348031234567');
+print(network.name); // Output: MTN
+```
+
+You can use the returned value like this:
+
+```dart
+switch (network) {
+  case Network.mtn:
+    // Handle MTN logic
+    break;
+  case Network.airtel:
+    // Handle Airtel logic
+    break;
+  case Network.glo:
+    // Handle Glo logic
+    break;
+  case Network.nineMobile:
+    // Handle 9mobile logic
+    break;
+  case Network.unknown:
+    // Handle unknown number
+    break;
+}
+```
+
+---
+
+## 🗓 Example App
+
+Check out the `example/` folder for a full working demo of how to use `phone_number_checker`.
+
+You can run it with:
+
+```bash
+cd example
+flutter run
+```
+
+---
+
+## 🔧 Supported Networks
+
+- **MTN Nigeria**
+- **Airtel Nigeria**
+- **Glo Nigeria**
+- **9mobile Nigeria**
+
+Unknown or invalid numbers are returned as `Network.unknown`.
+
+
+
+## 🚀 Contributions
+
+Pull requests are welcome! For major changes, please open an issue first
+to discuss what you would like to change.
+
+---
+
+Made with ❤️ by **Laiki Tech Innovations**
